@@ -19,4 +19,4 @@ const chainCheck = (arr) => {
   );
 };
 
-console.log(chainCheck(fixture));
+console.log(chainCheck(fixture)); // => 2

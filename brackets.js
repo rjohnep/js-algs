@@ -10,7 +10,7 @@ const isBalanced = (str) => {
     if (str[i] === '{') {
       stack.push(0);
     } else if (str[i] === '}') {
-      if(!stack.length) return false;
+      if (!stack.length) return false;
       stack.pop();
     }
   }
@@ -18,6 +18,6 @@ const isBalanced = (str) => {
   return !stack.length;
 }
 
-console.log(isBalanced(expression)); 
+console.log(isBalanced(expression));
 console.log(isBalanced(expressionFalse));
 console.log(isBalanced('')); 

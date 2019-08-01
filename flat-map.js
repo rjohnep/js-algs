@@ -1,33 +1,17 @@
 // #Recursion
 const deepFlatMapR = (arr) => {
+  console.log('iterate'); // 5
   return arr.reduce((acc, i) => {
     if (Array.isArray(i)) {
-      return [...acc, ...deepFlatMap(i)];
-    } else {
-      acc.push(i);
+      // return deepFlatMapR([...acc, ...i]); // 7 iterations
+      return deepFlatMapR(acc.concat(...i));
     }
-
-    return acc;
+    
+    return acc.concat(i);
   }, []);
 };
 
-assert.deepEqual(deepFlatMapR([1, 2, [3, [4], 5]]), [1, 2, 3, 4, 5]);
-
-
-// #Recursion with tail
-const deepFlatMap = (arr, tail = []) => {
-  return arr.reduce((acc, i) => {
-    if (Array.isArray(i)) {
-      return deepFlatMap(i, acc);
-    } else {
-      acc.push(i);
-    }
-
-    return acc;
-  }, tail);
-};
-
-assert.deepEqual(deepFlatMap([1, 2, [3, [4], 5]]), [1, 2, 3, 4, 5]);
+assert.deepEqual(deepFlatMapR([1, [2], [[3]], [[[4]]]]), [1, 2, 3, 4]);
 
 
 // #Iteratively
@@ -36,6 +20,7 @@ const deepFlatMap = (arr) => {
   let stack = arr;
 
   while (stack.length) {
+    console.log('iterate'); // 10
     const item = stack.shift();
 
     if (Array.isArray(item)) {
@@ -48,4 +33,4 @@ const deepFlatMap = (arr) => {
   return result;
 };
 
-assert.deepEqual(deepFlatMap([1, 2, [3, [4], 5]]), [1, 2, 3, 4, 5]);
+assert.deepEqual(deepFlatMap([1, [2], [[3]], [[[4]]]]), [1, 2, 3, 4]);

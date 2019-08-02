@@ -5,13 +5,19 @@ const isAnagram = (first, second) => {
 
   // разбиваем строку по символам, сортируем их и снова объединяем в строку
   // результаты сравниваем
-  a = a.split("").sort().join("");
-  b = b.split("").sort().join("");
+  a = a
+    .split('')
+    .sort()
+    .join('');
+  b = b
+    .split('')
+    .sort()
+    .join('');
 
   return a === b;
-}
+};
 
-let firstWord = "Mary";
-let secondWord = "Army";
+let firstWord = 'Mary';
+let secondWord = 'Army';
 
 console.log(isAnagram(firstWord, secondWord)); // true

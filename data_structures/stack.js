@@ -24,16 +24,16 @@ const stack = makeStack();
 
 assert.strictEqual(stack.isEmpty, true);
 
-stack.push("Hola");
-stack.push("Petuch");
-stack.push("!");
+stack.push('Hola');
+stack.push('Petuch');
+stack.push('!');
 
 assert.strictEqual(stack.isEmpty, false);
 assert.strictEqual(stack.length, 3);
-assert.strictEqual(stack.peek(), "!");
+assert.strictEqual(stack.peek(), '!');
 
 stack.pop();
 stack.pop();
 
 assert.strictEqual(stack.length, 1);
-assert.strictEqual(stack.peek(), "Hola");
+assert.strictEqual(stack.peek(), 'Hola');

@@ -1,11 +1,10 @@
-const isPowerOfTwoBit = (number) => {
-  return number & (number - 1) === 0;
-}
+const isPowerOfTwoBit = number => {
+  return number & (number - 1 === 0);
+};
 
-
-const isPowerOfTwo = (number) => {
+const isPowerOfTwo = number => {
   return number % 2 === 0;
-}
+};
 
 console.log(isPowerOfTwo(4)); // true
 console.log(isPowerOfTwo(64)); // true

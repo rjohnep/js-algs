@@ -16,10 +16,18 @@ const binarySearch = (array, value) => {
 };
 console.log(binarySearch(fixture, 5));
 
-
 // #2 recursive
-const recursiveBinarySearch = (array, value, middle = Math.floor(array.length / 2)) => {
-  if (middle > array.length || middle < 0 || (middle === 0 && array[middle] !== value)) return -1;
+const recursiveBinarySearch = (
+  array,
+  value,
+  middle = Math.floor(array.length / 2)
+) => {
+  if (
+    middle > array.length ||
+    middle < 0 ||
+    (middle === 0 && array[middle] !== value)
+  )
+    return -1;
 
   if (array[middle] === value) {
     return middle;
@@ -28,6 +36,6 @@ const recursiveBinarySearch = (array, value, middle = Math.floor(array.length / 
   } else {
     return recursiveBinarySearch(array, value, Math.floor(middle + middle / 2));
   }
-}
+};
 
 console.log(recursiveBinarySearch(fixture, 5));

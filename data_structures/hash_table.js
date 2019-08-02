@@ -65,6 +65,6 @@ class Table {
 }
 
 const table = new Table(5);
-table.insert("baa", 1);
-table.insert("aba", 2);
+table.insert('baa', 1);
+table.insert('aba', 2);
 console.log(table.get('aba')); // ->

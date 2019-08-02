@@ -1,5 +1,5 @@
-const multiply = (x) => {
-  const fn = (y) => multiply(x * y);
+const multiply = x => {
+  const fn = y => multiply(x * y);
   fn.valueOf = fn.toString = () => x;
   return fn;
 };

@@ -1,7 +1,7 @@
-const expression = "{{}}{}{}"
-const expressionFalse = "{}{{}";
+const expression = '{{}}{}{}';
+const expressionFalse = '{}{{}';
 
-const isBalanced = (str) => {
+const isBalanced = str => {
   const stack = [];
 
   if (str.length <= 0) return true;
@@ -16,8 +16,8 @@ const isBalanced = (str) => {
   }
 
   return !stack.length;
-}
+};
 
 console.log(isBalanced(expression));
 console.log(isBalanced(expressionFalse));
-console.log(isBalanced('')); 
+console.log(isBalanced(''));

@@ -1,7 +1,6 @@
 const isIsomorphic = (firstString, secondString) => {
-
   // проверка длины строк
-  if (firstString.length !== secondString.length) return false
+  if (firstString.length !== secondString.length) return false;
 
   const letterMap = {};
 
@@ -22,8 +21,8 @@ const isIsomorphic = (firstString, secondString) => {
   }
 
   return true;
-}
+};
 
-console.log(isIsomorphic("egg", 'add')); // true
-console.log(isIsomorphic("paper", 'title')); // true
-console.log(isIsomorphic("kick", 'side')); // false
+console.log(isIsomorphic('egg', 'add')); // true
+console.log(isIsomorphic('paper', 'title')); // true
+console.log(isIsomorphic('kick', 'side')); // false

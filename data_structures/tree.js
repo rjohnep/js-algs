@@ -27,11 +27,11 @@ class Tree {
   }
 
   depthFirstTraverse(order, callback) {
-    order === "pre" && callback(this.value);
+    order === 'pre' && callback(this.value);
     this.left && this.left.depthFirstTraverse(order, callback);
-    order === "in" && callback(this.value);
+    order === 'in' && callback(this.value);
     this.right && this.right.depthFirstTraverse(order, callback);
-    order === "post" && callback(this.value);
+    order === 'post' && callback(this.value);
   }
 
   breadthFirstTraverse(callback) {
@@ -54,7 +54,6 @@ class Tree {
     return this.value;
   }
 }
-
 
 const tree = new Tree(5);
 for (const value of [3, 6, 1, 7, 8, 4, 10, 2, 9]) {

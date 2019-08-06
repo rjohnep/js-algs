@@ -69,6 +69,28 @@ const makeGraph = (directed = false) => {
           }
         });
       }
+    },
+    depthFirstSearch(startNodeKey, applyFn) {
+      const startNode = this.getNode(startNodeKey);
+
+      // avoid double visit
+      const visited = this.nodes.reduce((acc, node) => {
+        acc[node.key] = false;
+        return acc;
+      }, {});
+
+      const goDepth = node => {
+        if (visited[node.key]) {
+          return undefined;
+        }
+
+        applyFn(node);
+        visited[node.key] = true;
+
+        node.neighbors.forEach(goDepth);
+      };
+
+      goDepth(startNode);
     }
   };
 };
@@ -95,3 +117,12 @@ unDirectedGraph.addEdge(0, 2);
 unDirectedGraph.addEdge(1, 2);
 
 assert.strictEqual(unDirectedGraph.print(), '0=>2 | 1=>2 | 2=>0,1');
+
+unDirectedGraph.breadthFirstSearch(0, node => console.log(node.key)); // 0 2 1
+
+unDirectedGraph.addNode(3);
+unDirectedGraph.addNode(4);
+unDirectedGraph.addEdge(0, 3);
+unDirectedGraph.addEdge(3, 4);
+
+unDirectedGraph.breadthFirstSearch(0, node => console.log(node.key)); // 0 2 1 3 4

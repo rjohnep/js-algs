@@ -1,69 +1,56 @@
-class Tree {
-  constructor(value) {
-    this.value = value;
-    this.left = null;
-    this.right = null;
-  }
+const makeNode = key => ({
+  key,
+  children: [],
+  addChild(node) {
+    const child = makeNode(node);
+    this.children.push(child);
 
-  insert(value) {
-    if (value <= this.value) {
-      if (!this.left) this.left = new Tree(value);
-      else this.left.insert(value);
-    } else {
-      if (!this.right) this.right = new Tree(value);
-      else this.right.insert(value);
+    return child;
+  }
+});
+
+const makeTree = rootKey => {
+  const root = makeNode(rootKey);
+
+  return {
+    root,
+    print() {
+      let result = '';
+
+      const traverse = (node, applyFn, depth) => {
+        applyFn(node, depth);
+
+        if (node.children.length) {
+          node.children.forEach(child => {
+            traverse(child, applyFn, depth++);
+          });
+        }
+      };
+
+      const renderToResult = (node, depth) => {
+        result += result.length === 0 ? node.key : `\n${' '.repeat(depth * 2)}`;
+      };
+
+      traverse(this.root, renderToResult, 1);
+
+      return result;
     }
-  }
+  };
+};
 
-  contains(value) {
-    if (value === this.value) return true;
-    if (value < this.value) {
-      if (!this.left) return false;
-      else return this.left.contains(value);
-    } else {
-      if (!this.right) return false;
-      else return this.right.contains(value);
-    }
-  }
+const DOMTree = makeTree('html');
 
-  depthFirstTraverse(order, callback) {
-    order === 'pre' && callback(this.value);
-    this.left && this.left.depthFirstTraverse(order, callback);
-    order === 'in' && callback(this.value);
-    this.right && this.right.depthFirstTraverse(order, callback);
-    order === 'post' && callback(this.value);
-  }
+const head = DOMTree.addChild('head');
+DOMTree.addChild('title:: Tree Structure');
 
-  breadthFirstTraverse(callback) {
-    const queue = [this];
-    while (queue.length) {
-      const root = queue.shift();
-      callback(root.value);
-      root.left && queue.push(root.left);
-      root.right && queue.push(root.right);
-    }
-  }
+const body = DOMTree.addChild('body');
+const header = body.addChild('header');
+header.addChild('H1 - Main Page');
 
-  getMinValue() {
-    if (this.left) return this.left.getMinValue();
-    return this.value;
-  }
+const mainSection = body.addChild('section');
+mainSection.addChild('p page content');
 
-  getMaxValue() {
-    if (this.right) return this.right.getMaxValue();
-    return this.value;
-  }
-}
+const footer = body.addChild('footer');
+footer.addChild(`span - Copyright ${new Date().getFullYear()}`);
 
-const tree = new Tree(5);
-for (const value of [3, 6, 1, 7, 8, 4, 10, 2, 9]) {
-  tree.insert(value);
-}
-/*
-  5
- 3 6
-1 4 7
- 2   8
-          10
-         9
-*/
+DOMTree.print();

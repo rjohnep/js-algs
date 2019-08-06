@@ -72,9 +72,11 @@ const three = one.addLeft(3);
 const four = one.addRight(4);
 
 const five = two.addLeft(5);
-const six = two.addLeft(6);
+const six = two.addRight(6);
 
 const seven = three.addLeft(7);
 const eight = three.addRight(8);
 
 assert.strictEqual(binaryTree.print(), '7=>3=>8=>1=>4=>0=>5=>2=>6');
+assert.strictEqual(binaryTree.print('PRE_ORDER'), '0=>1=>3=>7=>8=>4=>2=>5=>6');
+assert.strictEqual(binaryTree.print('POST_ORDER'), '7=>8=>3=>4=>1=>5=>6=>2=>0');

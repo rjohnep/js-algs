@@ -22,13 +22,16 @@ const makeTree = rootKey => {
 
         if (node.children.length) {
           node.children.forEach(child => {
-            traverse(child, applyFn, depth++);
+            traverse(child, applyFn, depth + 1);
           });
         }
       };
 
       const renderToResult = (node, depth) => {
-        result += result.length === 0 ? node.key : `\n${' '.repeat(depth * 2)}`;
+        result +=
+          result.length === 0
+            ? `\n${node.key}`
+            : `\n${' '.repeat(depth * 2)}${node.key}`;
       };
 
       traverse(this.root, renderToResult, 1);
@@ -40,10 +43,10 @@ const makeTree = rootKey => {
 
 const DOMTree = makeTree('html');
 
-const head = DOMTree.addChild('head');
-DOMTree.addChild('title:: Tree Structure');
+const head = DOMTree.root.addChild('head');
+head.addChild('title:: Tree Structure');
 
-const body = DOMTree.addChild('body');
+const body = DOMTree.root.addChild('body');
 const header = body.addChild('header');
 header.addChild('H1 - Main Page');
 
@@ -54,3 +57,15 @@ const footer = body.addChild('footer');
 footer.addChild(`span - Copyright ${new Date().getFullYear()}`);
 
 DOMTree.print();
+/*
+html
+    head
+      title:: Tree Structure
+    body
+      header
+        H1 - Main Page
+      section
+        p page content
+      footer
+         span - Copyright 2019
+*/

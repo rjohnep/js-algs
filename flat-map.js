@@ -1,5 +1,5 @@
 // #Recursion
-const deepFlatMapR = arr => {
+const deepFlatMapR = (arr) => {
   console.log('iterate'); // 5
   return arr.reduce((acc, i) => {
     if (Array.isArray(i)) {
@@ -14,9 +14,9 @@ const deepFlatMapR = arr => {
 assert.deepEqual(deepFlatMapR([1, [2], [[3]], [[[4]]]]), [1, 2, 3, 4]);
 
 // #Iteratively
-const deepFlatMap = arr => {
+const deepFlatMap = (arr) => {
   const result = [];
-  let stack = arr;
+  const stack = arr;
 
   while (stack.length) {
     console.log('iterate'); // 10

@@ -1,3 +1,16 @@
+for (var i = 1; i <= 5; i++) {
+  (function (j) {
+    setTimeout(() => {
+      console.log(j);
+    },
+      j * 1000
+    );
+  })(i);
+}
+
+
+
+/******************************/
 const makeCounter = () => {
   let count = 0;
   return () => count++;
@@ -10,6 +23,9 @@ console.log(counter());
 console.log(counter());
 console.log(counter());
 
+
+
+/******************************/
 const makeAdd = start => {
   return x => start + x;
 };
@@ -18,6 +34,9 @@ const add = makeAdd(5);
 console.log(add(5));
 console.log(add(10));
 console.log(add(3));
+
+/******************************/
+
 
 // sum
 const makeSum = () => {

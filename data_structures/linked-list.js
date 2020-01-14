@@ -110,7 +110,7 @@ const makeLinkedList = () => {
       for (
         let i = 0, iteratingdNode = this.head;
         i < this.length;
-        i++, iteratingdNode = iteratingdNode.next
+        i++ , iteratingdNode = iteratingdNode.next
       ) {
         values.push(iteratingdNode.value);
       }

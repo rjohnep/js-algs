@@ -17,7 +17,7 @@ const isAnagram = (first, second) => {
   return a === b;
 };
 
-let firstWord = 'Mary';
-let secondWord = 'Army';
+const firstWord = 'Mary';
+const secondWord = 'Army';
 
 console.log(isAnagram(firstWord, secondWord)); // true

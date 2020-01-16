@@ -1,21 +1,25 @@
-const sum = n => n * 2;
-const multiply = (a, b) => a * b;
-const multiplyOne = n => n * n;
-
-const compose = (...fns) => (...args) => {
-  const first = fns.pop();
-  return fns.reduceRight((acc, fn) => fn(acc), first(...args));
-};
-
+//PIPE
 const pipe = (first, ...fns) => (...args) => {
   return fns.reduce((acc, fn) => fn(acc), first(...args));
 };
 
+//COMPOSE
+//MULTIPLE ARGUMENTS
+const compose = (first, ...fns) => (...args) => {
+  // const first = fns.pop();
+  return fns.reduceRight((acc, fn) => fn(acc), first(...args));
+};
+
+//WITH ONE ARGUMENT
+const composeWithOneArg = (...fns) => (x) => {
+  return fns.reduceRight((acc, fn) => fn(acc), x);
+};
+
 const composeFromPipe = (...fns) => pipe(...fns.reverse());
 
-const composeWithOneArg = (...fns) => args => {
-  return fns.reduceRight((acc, fn) => fn(acc), args);
-};
+const sum = n => n * 2;
+const multiply = (a, b) => a * b;
+const multiplyOne = n => n * n;
 
 assert.equal(
   pipe(

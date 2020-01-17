@@ -1,4 +1,6 @@
 const isAnagram = (first, second) => {
+  if (first.length !== second.length) return false;
+
   // сначала приводим обе строки к нижнему регистру
   let a = first.toLowerCase();
   let b = second.toLowerCase();

@@ -1,5 +1,28 @@
 // find intersection
+const firstArray = [2, 2, 4, 1];
+const secondArray = [1, 2, 0, 2];
 
+const getIntersection = (first, second) => {
+  const uniqueNmbrs = new Set(first);
+
+  return [
+    // Array.from()
+    ...(second.reduce(
+      (acc, nmbr) => {
+        if (uniqueNmbrs.has(nmbr)) { acc.add(nmbr) }
+
+        return acc;
+      },
+      new Set()
+    ))
+  ];
+};
+
+console.log(getIntersection(firstArray, secondArray)); // -> [1,2]
+
+/***********************************************/
+// SIMPLE VERSION
+// find intersection
 const firstArray = [2, 2, 4, 1];
 const secondArray = [1, 2, 0, 2];
 
@@ -21,4 +44,4 @@ const getIntersection = (first, second) => {
   return result;
 };
 
-console.log(getIntersection(firstArray, secondArray));
+console.log(getIntersection(firstArray, secondArray)); // -> [1,2]

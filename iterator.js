@@ -1,24 +1,21 @@
-var sad = {
+var objIterator = {
   0: 'a',
   1: 'b',
   2: 'c',
   [Symbol.iterator]() {
-    const data = Object.values(sad);
-    let index = 0;
+    const data = Object.values(objIterator);
 
     return {
       next() {
-        if (index > data.length - 1) {
+        if (!data.length) {
           return {
             value: undefined,
             done: true
           };
         }
 
-        const value = data[index];
-        index++;
         return {
-          value,
+          value: data.shift(),
           done: false
         };
       }
@@ -26,7 +23,7 @@ var sad = {
   }
 };
 
-for (let val of sad) {
+for (let val of objIterator) {
   console.log(val)
 }
 

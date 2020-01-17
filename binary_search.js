@@ -1,6 +1,7 @@
+// HAVE TO BE SORTED
 const fixture = [1, 2, 3, 4, 5];
 
-// #1 while
+// #1 WHILE
 const binarySearch = (array, value) => {
   let middle = Math.floor(array.length / 2);
 
@@ -16,7 +17,8 @@ const binarySearch = (array, value) => {
 };
 console.log(binarySearch(fixture, 5));
 
-// #2 recursive
+/*********************************************/
+// #2 RECURSIVE
 const recursiveBinarySearch = (
   array,
   value,

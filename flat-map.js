@@ -1,9 +1,9 @@
-// #Recursion
+// RECURSION
 const deepFlatMapR = (arr) => {
-  console.log('iterate'); // 5
   return arr.reduce((acc, i) => {
     if (Array.isArray(i)) {
       // return deepFlatMapR([...acc, ...i]); // 7 iterations
+      // 'concat(...i)' vs 'concat(i)' - '...i' is optimising iteration counts
       return deepFlatMapR(acc.concat(...i));
     }
 
@@ -13,7 +13,7 @@ const deepFlatMapR = (arr) => {
 
 assert.deepEqual(deepFlatMapR([1, [2], [[3]], [[[4]]]]), [1, 2, 3, 4]);
 
-// #Iteratively
+// ITERATIVELY
 const deepFlatMap = (arr) => {
   const result = [];
   const stack = arr;

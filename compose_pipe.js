@@ -1,4 +1,7 @@
 //PIPE
+const pipeWithOneArg = (...fns) => (x) => {
+  return fns.reduce((acc, fn) => fn(acc), x);
+};
 const pipe = (first, ...fns) => (...args) => {
   return fns.reduce((acc, fn) => fn(acc), first(...args));
 };
@@ -35,5 +38,6 @@ assert.equal(
   )(2, 2),
   8
 );
+
 assert.equal(composeFromPipe(sum, multiply)(2, 2), 8);
 assert.equal(composeWithOneArg(sum, multiplyOne)(2), 8);
